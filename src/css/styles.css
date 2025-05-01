@@ -4,6 +4,7 @@
 }
 
 body {
+    background: #ebedeb;
     display: grid;
     grid-template-rows:auto 1fr auto;
     height: 100vh;
@@ -15,7 +16,8 @@ h1 {
 
 a {
     text-decoration: none;
-    color: grey;
+    color: teal;
+    font-weight: bold;
 }
 
 a:hover {
@@ -23,7 +25,7 @@ a:hover {
 }
 
 header {
-    background: salmon;
+    background: white;
     margin: 15px auto;
     padding: 15px;
     border-radius: 15px;
@@ -31,13 +33,12 @@ header {
 
 main {
     margin: 0 auto;
-    background: purple;
     width: 80%;
     border-radius: 15px;
 }
 
 main section {
-    background: yellow;
+    background: white;
     margin: 15px;
     padding: 15px;
     border-radius: 15px;
@@ -64,7 +65,7 @@ img {
 }
 
 footer {
-    background: teal;
+    background: white;
     margin-top: 15px;
     padding: 15px;
     display: grid;

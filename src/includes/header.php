@@ -2,6 +2,8 @@
 <html lang="en">
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/src/css/styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!--for social media icons-->
 <title><?php echo isset($pageTitle) ? $pageTitle : "pageTitle is undefined" ?></title>
 <body>
 <header>
