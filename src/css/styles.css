@@ -79,3 +79,12 @@ footer section {
 
 .social-media {
 }
+
+.data-table {
+    width: 100%;
+    margin-top: 10px;
+}
+.data-table td {
+    padding: 10px;
+    text-align: center;
+}

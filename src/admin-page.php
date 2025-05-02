@@ -24,7 +24,7 @@ $medicsResult = mysqli_query($connection, "
             <h2>Specializari</h2>
             <button onclick="location.href='crud/add-specializare.php'">Adauga Specializare</button>
         </div>
-        <table border="1" cellpadding="8" cellspacing="0">
+        <table class="data-table">
             <thead>
             <tr>
                 <th>ID</th>
@@ -39,7 +39,7 @@ $medicsResult = mysqli_query($connection, "
                     <td><?php echo htmlspecialchars($row['specialization_name']); ?></td>
                     <td>
                         <button>Edit</button>
-                        <button>Delete</button>
+                        <button onclick="confirmDelete('specialization', <?php echo $row['id']; ?>)">Delete</button>
                     </td>
                 </tr>
             <?php } ?>
@@ -53,7 +53,7 @@ $medicsResult = mysqli_query($connection, "
             <h2>Servicii</h2>
             <button onclick="location.href='crud/add-serviciu.php'">Adauga Serviciu</button>
         </div>
-        <table border="1" cellpadding="8" cellspacing="0">
+        <table class="data-table">
             <thead>
             <tr>
                 <th>ID</th>
@@ -70,7 +70,7 @@ $medicsResult = mysqli_query($connection, "
                     <td><?php echo htmlspecialchars($row['specialization_name']); ?></td>
                     <td>
                         <button>Edit</button>
-                        <button>Delete</button>
+                        <button onclick="confirmDelete('service', <?php echo $row['id']; ?>)">Delete</button>
                     </td>
                 </tr>
             <?php } ?>
@@ -84,7 +84,7 @@ $medicsResult = mysqli_query($connection, "
             <h2>Medici</h2>
             <button onclick="location.href='crud/add-medic.php'">Adauga Medic</button>
         </div>
-        <table border="1" cellpadding="8" cellspacing="0">
+        <table class="data-table">
             <thead>
             <tr>
                 <th>ID</th>
@@ -101,11 +101,11 @@ $medicsResult = mysqli_query($connection, "
                     <td><?php echo htmlspecialchars($row['first_name']); ?></td>
                     <td><?php echo htmlspecialchars($row['last_name']); ?></td>
                     <td>
-                        <?php echo $row['specialization_name'] ? htmlspecialchars($row['specialization_name']) : 'Fara'; ?>
+                        <?php echo $row['specialization_name'] ? htmlspecialchars($row['specialization_name']) : '-'; ?>
                     </td>
                     <td>
                         <button>Edit</button>
-                        <button>Delete</button>
+                        <button onclick="confirmDelete('medic', <?php echo $row['id']; ?>)">Delete</button>
                     </td>
                 </tr>
             <?php } ?>
@@ -113,3 +113,11 @@ $medicsResult = mysqli_query($connection, "
         </table>
     </section>
 </main>
+
+<script>
+    function confirmDelete(type, id) {
+        if (confirm("Sigur vrei sa stergi acest element?")) {
+            window.location.href = 'crud/delete.php?type=' + type + '&id=' + id;
+        }
+    }
+</script>
