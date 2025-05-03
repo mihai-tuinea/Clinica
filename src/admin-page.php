@@ -22,7 +22,7 @@ $medicsResult = mysqli_query($connection, "
     <section>
         <div style="display:flex; gap:20px; align-items: center">
             <h2>Specializari</h2>
-            <button onclick="location.href='crud/add-specializare.php'">Adauga Specializare</button>
+            <button onclick="location.href='crud/create.php?type=specialization'">Adauga Specializare</button>
         </div>
         <table class="data-table">
             <thead>
@@ -51,7 +51,7 @@ $medicsResult = mysqli_query($connection, "
     <section>
         <div style="display:flex; gap:20px; align-items: center">
             <h2>Servicii</h2>
-            <button onclick="location.href='crud/add-serviciu.php'">Adauga Serviciu</button>
+            <button onclick="location.href='crud/create.php?type=service'">Adauga Serviciu</button>
         </div>
         <table class="data-table">
             <thead>
@@ -82,7 +82,7 @@ $medicsResult = mysqli_query($connection, "
     <section>
         <div style="display:flex; gap:20px; align-items: center">
             <h2>Medici</h2>
-            <button onclick="location.href='crud/add-medic.php'">Adauga Medic</button>
+            <button onclick="location.href='crud/create.php?type=medic'">Adauga Medic</button>
         </div>
         <table class="data-table">
             <thead>
