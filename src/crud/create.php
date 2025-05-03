@@ -4,7 +4,7 @@ include("../includes/config.php");
 $type = $_GET["type"];
 $specializationsResult = null;
 
-if ($type == "service" || "medic") {
+if ($type == "service" || $type == "medic") {
     $specializationsResult = mysqli_query($connection, "SELECT id, specialization_name FROM specializations");
 }
 

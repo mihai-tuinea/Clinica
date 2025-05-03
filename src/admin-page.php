@@ -38,7 +38,9 @@ $medicsResult = mysqli_query($connection, "
                     <td><?php echo $row['id']; ?></td>
                     <td><?php echo htmlspecialchars($row['specialization_name']); ?></td>
                     <td>
-                        <button>Edit</button>
+                        <button onclick="location.href='crud/update.php?type=specialization&id=<?php echo $row['id']; ?>'">
+                            Edit
+                        </button>
                         <button onclick="confirmDelete('specialization', <?php echo $row['id']; ?>)">Delete</button>
                     </td>
                 </tr>
@@ -69,7 +71,8 @@ $medicsResult = mysqli_query($connection, "
                     <td><?php echo htmlspecialchars($row['service_name']); ?></td>
                     <td><?php echo htmlspecialchars($row['specialization_name']); ?></td>
                     <td>
-                        <button>Edit</button>
+                        <button onclick="location.href='crud/update.php?type=service&id=<?php echo $row['id']; ?>'">Edit
+                        </button>
                         <button onclick="confirmDelete('service', <?php echo $row['id']; ?>)">Delete</button>
                     </td>
                 </tr>
@@ -104,7 +107,9 @@ $medicsResult = mysqli_query($connection, "
                         <?php echo $row['specialization_name'] ? htmlspecialchars($row['specialization_name']) : '-'; ?>
                     </td>
                     <td>
-                        <button>Edit</button>
+                        <button onclick="location.href='crud/update.php?type=medic&id=<?php echo $row['id']; ?>'">
+                            Edit
+                        </button>
                         <button onclick="confirmDelete('medic', <?php echo $row['id']; ?>)">Delete</button>
                     </td>
                 </tr>
