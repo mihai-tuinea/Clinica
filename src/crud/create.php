@@ -1,49 +1,45 @@
 <?php
 include("../includes/config.php");
 
+$error = NULL;
 $type = $_GET["type"];
-$specializationsResult = null;
+$specializations_result = mysqli_query($connection, "SELECT id, specialization_name FROM specializations");
 
-if ($type == "service" || $type == "medic") {
-    $specializationsResult = mysqli_query($connection, "SELECT id, specialization_name FROM specializations");
-}
-
-function validText($text)
+function valid_text($text)
 {
     return preg_match("/^[a-zA-Z ]*$/", $text);
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $query = '';
+$query = "";
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
     switch ($type) {
-
-        case 'specialization':
-            $name = trim($_POST['specialization_name']);
-            if (!validText($name)) {
+        case "specialization":
+            $name = trim($_POST["specialization_name"]);
+            if (!valid_text($name)) {
                 $error = "Numele specializarii trebuie sa contina doar litere.";
                 break;
             }
             $query = "INSERT INTO specializations (specialization_name) VALUES ('$name')";
             break;
 
-        case 'service':
-            $name = trim($_POST['service_name']);
-            if (!validText($name)) {
+        case "service":
+            $name = trim($_POST["service_name"]);
+            if (!valid_text($name)) {
                 $error = "Numele serviciului trebuie sa contina doar litere.";
                 break;
             }
-            $specialization_id = intval($_POST['specialization_id']);
+            $specialization_id = intval($_POST["specialization_id"]);
             $query = "INSERT INTO services(service_name,specialization_id) VALUES ('$name','$specialization_id')";
             break;
 
-        case 'medic':
-            $first_name = trim($_POST['first_name']);
-            $last_name = trim($_POST['last_name']);
-            if (!validText($first_name) || !validText($last_name)) {
+        case "medic":
+            $first_name = trim($_POST["first_name"]);
+            $last_name = trim($_POST["last_name"]);
+            if (!valid_text($first_name) || !valid_text($last_name)) {
                 $error = "Numele si prenumele trebuie sa contina doar litere.";
                 break;
             }
-            $specialization_id = $_POST['specialization_id'] != '' ? intval($_POST['specialization_id']) : 'NULL';
+            $specialization_id = intval($_POST["specialization_id"]);
             $query = "INSERT INTO medics (first_name, last_name, specialization_id) 
                       VALUES ('$first_name', '$last_name', $specialization_id)";
             break;
@@ -51,6 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         default:
             die("Invalid Type!");
     }
+
     if (!isset($error)) {
         try {
             $result = mysqli_query($connection, $query);
@@ -67,8 +64,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
+    $specializations_result = mysqli_query($connection, "SELECT id, specialization_name FROM specializations");
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -138,9 +137,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     Specializare:
                     <select name="specialization_id" required>
                         <option value="" disabled selected>-- Selecteaza o specializare --</option>
-                        <?php while ($row = mysqli_fetch_assoc($specializationsResult)): ?>
-                            <option value="<?php echo $row['id']; ?>">
-                                <?php echo htmlspecialchars($row['specialization_name']); ?>
+                        <?php while ($row = mysqli_fetch_assoc($specializations_result)): ?>
+                            <option value="<?php echo $row["id"]; ?>">
+                                <?php echo htmlspecialchars($row["specialization_name"]); ?>
                             </option>
                         <?php endwhile; ?>
                     </select>
@@ -156,12 +155,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="text" name="last_name" required>
                 </label>
                 <label>
-                    Specializare (optional):
-                    <select name="specialization_id">
-                        <option value="">-- Fara specializare --</option>
-                        <?php while ($row = mysqli_fetch_assoc($specializationsResult)): ?>
-                            <option value="<?php echo $row['id']; ?>">
-                                <?php echo htmlspecialchars($row['specialization_name']); ?>
+                    Specializare:
+                    <select name="specialization_id" required>
+                        <option value="" disabled selected>-- Selecteaza o specializare --</option>
+                        <?php while ($row = mysqli_fetch_assoc($specializations_result)): ?>
+                            <option value="<?php echo $row["id"]; ?>">
+                                <?php echo htmlspecialchars($row["specialization_name"]); ?>
                             </option>
                         <?php endwhile; ?>
                     </select>
