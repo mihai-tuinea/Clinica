@@ -31,15 +31,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
 <h2>Login</h2>
-<?php if (isset($error)) { echo "<p style='color:red'>$error</p>"; } ?>
+<?php if (isset($error)) {
+    echo "<p style='color:red'>$error</p>";
+} ?>
 <section>
-<form method="POST" action="login.php">
-    <label for="username">Username:</label>
-    <input type="text" name="username" id="username" required><br><br>
-    <label for="password">Password:</label>
-    <input type="password" name="password" id="password" required><br><br>
-    <button type="submit">Login</button>
-</form>
+    <form method="POST" action="login.php">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required><br><br>
+        <button type="submit">Login</button>
+        <br><br>
+    </form>
+    <button type="button" onclick="location.href='../index.php'">Renunta</button>
 </section>
 </body>
 </html>

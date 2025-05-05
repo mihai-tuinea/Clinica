@@ -1,0 +1,89 @@
+CREATE DATABASE IF NOT EXISTS clinica;
+USE clinica;
+
+-- Specializations Table
+CREATE TABLE specializations (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    specialization_name VARCHAR(255) NOT NULL UNIQUE
+);
+
+-- Services Table
+CREATE TABLE services (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    service_name VARCHAR(255) NOT NULL,
+    specialization_id INT NOT NULL,
+    FOREIGN KEY (specialization_id) REFERENCES specializations(id) ON DELETE CASCADE,
+    CONSTRAINT unique_service_per_specialization UNIQUE (service_name, specialization_id)
+);
+
+-- Medics Table
+CREATE TABLE medics (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    specialization_id INT NOT NULL,
+    FOREIGN KEY (specialization_id) REFERENCES specializations(id) ON DELETE CASCADE,
+    CONSTRAINT unique_medic_per_specialization UNIQUE (first_name, last_name, specialization_id)
+);
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+
+INSERT INTO `users` (`id`, `username`, `password`) VALUES (NULL, 'a', 'a');
+INSERT INTO `users` (`id`, `username`, `password`) VALUES (NULL, 'user', 'password');
+
+
+-- Insert Specializations
+INSERT INTO specializations (specialization_name) VALUES 
+('Cardiologie'),
+('Dermatologie'),
+('Pediatrie'),
+('Neurologie'),
+('Ortopedie');
+
+-- Insert Services
+INSERT INTO services (service_name, specialization_id) VALUES
+('Consultatie initiala', 1),
+('Electrocardiograma (EKG)', 1),
+('Ecografie cardiaca', 1),
+('Consultatie dermatologica', 2),
+('Biopsie cutanata', 2),
+('Tratament acnee', 2),
+('Consultatie pediatrica', 3),
+('Vaccinare copii', 3),
+('Control dezvoltare', 3),
+('Consultatie neurologica', 4),
+('Electroencefalograma (EEG)', 4),
+('Rezonanta magnetica (RMN)', 4),
+('Consultatie ortopedica', 5),
+('Radiografie', 5),
+('Fizioterapie', 5),
+-- Similar services across specializations
+('Consultatie initiala', 2),
+('Consultatie initiala', 3),
+('Consultatie initiala', 4),
+('Consultatie initiala', 5);
+
+-- Insert Medics
+INSERT INTO medics (first_name, last_name, specialization_id) VALUES
+('Andrei', 'Popescu', 1),
+('Ioana', 'Ionescu', 1),
+('Maria', 'Dumitru', 2),
+('Calin', 'Georgescu', 2),
+('Elena', 'Marin', 3),
+('Bogdan', 'Vasilescu', 3),
+('Sorina', 'Petrescu', 4),
+('Dan', 'Iliescu', 4),
+('Alexandra', 'Neagu', 5),
+('Mihai', 'Barbu', 5);
+
+
+
+
+
+
+
+
