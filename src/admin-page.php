@@ -3,7 +3,6 @@ $pageTitle = "Admin Page";
 include("includes/header.php");
 include("includes/config.php");
 
-// Fetch data
 $specializationsResult = mysqli_query($connection, "SELECT * FROM specializations");
 $servicesResult = mysqli_query($connection, "
     SELECT services.id, service_name, specialization_name 
@@ -19,6 +18,7 @@ $medicsResult = mysqli_query($connection, "
 
 <main>
     <!-- Specializari -->
+    <h2 style="color:green"><?php echo isset($_GET["feedback"]) ? $_GET["feedback"] : "" ?></h2>
     <section>
         <div style="display:flex; gap:20px; align-items: center">
             <h2>Specializari</h2>
