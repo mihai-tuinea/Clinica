@@ -17,7 +17,7 @@
     </section>
     <section>
         <p>Copyright &copy Mihai Tuinea - INF 221</p>
-        <button onclick="location.href='admin-page.php'" style="background:red; width:50px; height:30px;">Admin</button>
+        <button class="admin-button" onclick="location.href='admin-page.php'">Login</button>
     </section>
 </footer>
 </body>

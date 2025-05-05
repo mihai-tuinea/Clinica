@@ -22,5 +22,5 @@ if (isset($_GET['type']) && isset($_GET['id'])) {
     mysqli_query($connection, $query);
 }
 
-header("Location: ../admin-page.php");
+header("Location: ../admin-page.php?feedback=Stergerea a avut succes!");
 exit;

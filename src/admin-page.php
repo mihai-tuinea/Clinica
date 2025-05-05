@@ -24,15 +24,25 @@ $medicsResult = mysqli_query($connection, "
     LEFT JOIN specializations ON medics.specialization_id = specializations.id
 ");
 ?>
-
-<main>
-    <!-- Specializari -->
-    <form action="includes/logout.php" method="post" style="margin: 0;">
-        <button type="submit" style="background: #c00; color: white; padding: 8px 16px; border: none; cursor: pointer;">
+<header>
+    <form action="includes/logout.php" method="post">
+        <button class="admin-button" type="submit">
             Logout
         </button>
     </form>
-    <h2 style="color:green"><?php echo isset($_GET["feedback"]) ? $_GET["feedback"] : "" ?></h2>
+</header>
+<main>
+    <?php $feedback = isset($_GET["feedback"]) ? $_GET["feedback"] : ""; ?>
+    <?php if ($feedback): ?>
+        <section id="feedback-message" style="background:#e6ffe6; display:flex; justify-content: space-between">
+            <h2 style="color:green; margin:0;"><?php echo htmlspecialchars($feedback); ?></h2>
+            <button onclick="document.getElementById('feedback-message').style.display='none';"
+                    style="background:none; border:none; font-size:30px;">&times;
+            </button>
+        </section>
+    <?php endif; ?>
+
+    <!-- Specializari -->
     <section>
         <div style="display:flex; gap:20px; align-items: center">
             <h2>Specializari</h2>
