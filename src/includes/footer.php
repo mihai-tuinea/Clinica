@@ -1,6 +1,6 @@
 <footer>
     <section>
-        <p>Numar de Telefon: <span style="color:purple;font-weight: bold">012345678</span></p>
+        <p>Numar de Telefon: <span class="phone-number">012345678</span></p>
     </section>
     <section>
         <ul class="social-media">

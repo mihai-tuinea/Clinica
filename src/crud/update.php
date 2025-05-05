@@ -135,7 +135,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <body>
 <header>
     <h1>Pagina de Editare</h1>
-    <h2 style="color:red"><?php echo isset($error) ? $error : "" ?></h2>
+    <h2 class="error"><?php echo isset($error) ? $error : "" ?></h2>
 </header>
 <main>
     <section>

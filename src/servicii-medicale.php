@@ -32,45 +32,8 @@ while ($row = mysqli_fetch_assoc($result)) {
 }
 ?>
 
-<style>
-    .specialization-toggle {
-        cursor: pointer;
-        font-size: 1.1rem;
-        font-weight: bold;
-        background-color: #f0f0f0;
-        padding: 0.5rem;
-        border: none;
-        width: 100%;
-        text-align: left;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-radius: 4px;
-        transition: background-color 0.3s ease;
-    }
-
-    .specialization-toggle:hover {
-        background-color: #e0e0e0;
-    }
-
-    .toggle-icon {
-        display: inline-block;
-        transition: transform 0.3s ease;
-    }
-
-    .toggle-icon.rotate {
-        transform: rotate(180deg);
-    }
-
-    .services-list {
-        padding-left: 1rem;
-        display: none;
-        margin-bottom: 1rem;
-    }
-</style>
-
 <main>
-    <ol style="list-style: none; padding: 0;">
+    <ol class="services-container">
         <?php foreach ($specializationsArray as $specializationId => $specialization): ?>
             <li>
                 <section>

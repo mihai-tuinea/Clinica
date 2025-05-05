@@ -34,7 +34,7 @@ $medicsResult = mysqli_query($connection, "
 <main>
     <?php $feedback = isset($_GET["feedback"]) ? $_GET["feedback"] : ""; ?>
     <?php if ($feedback): ?>
-        <section id="feedback-message" style="background:#e6ffe6; display:flex; justify-content: space-between">
+        <section id="feedback-message">
             <h2 style="color:green; margin:0;"><?php echo htmlspecialchars($feedback); ?></h2>
             <button onclick="document.getElementById('feedback-message').style.display='none';"
                     style="background:none; border:none; font-size:30px;">&times;
@@ -44,7 +44,7 @@ $medicsResult = mysqli_query($connection, "
 
     <!-- Specializari -->
     <section>
-        <div style="display:flex; gap:20px; align-items: center">
+        <div class="admin-section-header">
             <h2>Specializari</h2>
             <button onclick="location.href='crud/create.php?type=specialization'">Adauga Specializare</button>
         </div>
